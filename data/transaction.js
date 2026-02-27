@@ -1,0 +1,1 @@
+exports.transaction = { firstName: 'test', lastName: 'user', zipCode: '12345' };
