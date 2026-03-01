@@ -25,7 +25,7 @@ pipeline {
                 Build Number: ${env.BUILD_NUMBER}
                 Build URL: ${env.BUILD_URL}
                 """,
-                to: "critixproject@gmail.com",
+                to: "buhneaemilia6@gmail.com",
                 from: "critixproject@gmail.com"
             )   
         }
