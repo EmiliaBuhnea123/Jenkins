@@ -19,9 +19,10 @@ pipeline {
     post {
         always {
             mail to: 'ebuhnea@griddynamics.com',
-                 subject: "Playwright Test Results: ${currentBuild.currentResult} : ${env.JOB_NAME}",
+                 subject: "Playwright Test Results: ${currentBuild.currentResult}",
                  body: """
                 The Playwright tests have completed with status: ${currentBuild.currentResult}. Please check the Jenkins console output for more details.
+                Project: ${env.JOB_NAME}
                 Build Number: ${env.BUILD_NUMBER}
                 Build URL: ${env.BUILD_URL}
                 """
