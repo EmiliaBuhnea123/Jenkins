@@ -12,12 +12,15 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'npx playwright test'
+                sh 'npx playwright test --reporter=line,allure-playwright'
             }
         }
     }
     post {
         always {
+            allure includeProperties: false,
+                   jdk: '',
+                   results: [[path: 'allure-results']]
             mail to: 'ebuhnea@griddynamics.com',
                  subject: "Playwright Test Results: ${currentBuild.currentResult}",
                  body: """
