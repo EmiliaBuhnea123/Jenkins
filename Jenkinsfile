@@ -1,8 +1,5 @@
 pipeline {
-    agent { label 'master' }
-    environment {
-    PATH = "/usr/local/bin:${env.PATH}"
-    }
+    agent any
     stages {
         stage('Install Dependencies') {
             steps {
@@ -25,8 +22,7 @@ pipeline {
                 Build Number: ${env.BUILD_NUMBER}
                 Build URL: ${env.BUILD_URL}
                 """,
-                to: "ebuhnea@griddynamics.com",
-                from: "ebuhnea@griddynamics.com"
+                to: "ebuhnea@griddynamics.com"
             )   
         }
         success {
