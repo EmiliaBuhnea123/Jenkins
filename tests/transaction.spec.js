@@ -1,6 +1,6 @@
 const { TransactionPage } = require('../pages/TransactionPage');
 const { AddProductPage } = require('../pages/AddProductPage');
-// const { transaction } = require('../data/transaction');
+const { transaction } = require('../data/transaction');
 const { test } = require('../fixtures/loginFixture');
 
 test('should pay for the product', async ({ loggedInPage }) => {
