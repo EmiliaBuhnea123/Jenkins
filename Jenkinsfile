@@ -22,6 +22,9 @@ pipeline {
     }
      post {
         always {
+            allure includeProperties: false,
+                   jdk: '',
+                   results: [[path: 'allure-results']]
             script {       
                 emailext(
                     to: 'ebuhnea@griddynamics.com',
