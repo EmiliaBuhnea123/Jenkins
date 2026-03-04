@@ -22,10 +22,10 @@ pipeline {
     }
      post {
         always {
-            allure includeProperties: false,
+            script {       
+                allure includeProperties: false,
                    jdk: '',
                    results: [[path: 'allure-results']]
-            script {       
                 emailext(
                     to: 'ebuhnea@griddynamics.com',
                     subject: "Playwright Test Results: ${currentBuild.currentResult}",
