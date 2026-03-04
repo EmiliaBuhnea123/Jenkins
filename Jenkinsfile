@@ -22,6 +22,9 @@ pipeline {
     }
     post {
         always {
+            script {
+            }
+                 sh 'ls -l ${WORKSPACE}'
             allure includeProperties: false,
                    jdk: '',
                    results: [[path: 'allure-results']]
