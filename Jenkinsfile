@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         PATH = "/usr/local/bin:${env.PATH}"
+        EMAIL = credentials('email_notification')
     }
     stages {
         stage('Install Dependencies') {
@@ -26,7 +27,7 @@ pipeline {
                    results: [[path: 'allure-results']]
             script {       
                 emailext(
-                    to: 'ebuhnea@griddynamics.com',
+                    to: "${env.EMAIL}",
                     subject: "Playwright Test Results: ${currentBuild.currentResult}",
                     body: """
                         The Playwright tests have completed with status: ${currentBuild.currentResult}.
