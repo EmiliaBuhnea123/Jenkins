@@ -15,7 +15,8 @@ pipeline {
                 sh 'npx playwright test'
                 sh 'npx allure generate allure-results --clean -o allure-report'
                 sh 'zip -r allure-report.zip allure-report'
-                archiveArtifacts artifacts: 'allure-report.zip', fingerprint: true
+                sh 'ls -l ${WORKSPACE}'
+                sh 'pwd'
             }
         }
     }
