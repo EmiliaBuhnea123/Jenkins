@@ -25,6 +25,7 @@ pipeline {
             allure includeProperties: false,
                    jdk: '',
                    results: [[path: 'allure-results']]
+            sh 'cp allure-report.zip allure-report-for-email.zip'
             script {       
                 emailext(
                     to: 'ebuhnea@griddynamics.com',
@@ -36,7 +37,7 @@ pipeline {
                         Build Number: ${env.BUILD_NUMBER}
                         Build URL: ${env.BUILD_URL}
                     """,
-                    attachmentsPattern: 'allure-report.zip'
+                    attachmentsPattern: 'allure-report-for-email.zip'
                 )
             }
         }
