@@ -28,7 +28,7 @@ pipeline {
                 Project: ${env.JOB_NAME}
                 Build Number: ${env.BUILD_NUMBER}
                 Build URL: ${env.BUILD_URL}
-                Attachment: "allure-report.zip"
+                Attachment: allure-report.zip
                 """
         }
         success {
