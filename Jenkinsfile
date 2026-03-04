@@ -15,6 +15,7 @@ pipeline {
                 sh 'npx playwright test'
                 sh 'npx allure generate allure-results --clean -o allure-report'
                 sh 'zip -r allure-report.zip allure-report'
+                archiveArtifacts artifacts: 'allure-report.zip', fingerprint: true
             }
         }
     }
@@ -27,7 +28,7 @@ pipeline {
             to: 'ebuhnea@griddynamics.com',
             subject: "Playwright Test Results: ${currentBuild.currentResult}",
             body: """
-                The Playwright test have completed with status: ${currentBuild.currentResult}.
+                The Playwright tests have completed with status: ${currentBuild.currentResult}.
                 Check Jenkins console for details.
                 Project: ${env.JOB_NAME}
                 Build Number: ${env.BUILD_NUMBER}
