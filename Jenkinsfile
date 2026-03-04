@@ -23,15 +23,18 @@ pipeline {
             allure includeProperties: false,
                    jdk: '',
                    results: [[path: 'allure-results']]
-            mail to: 'ebuhnea@griddynamics.com',
-                 subject: "Playwright Test Results: ${currentBuild.currentResult}",
-                 body: """
-                The Playwright tests have completed with status: ${currentBuild.currentResult}. Please check the Jenkins console output for more details.
+            emailext(
+            to: 'ebuhnea@griddynamics.com',
+            subject: "Playwright Test Results: ${currentBuild.currentResult}",
+            body: """
+                The Playwright tests have completed with status: ${currentBuild.currentResult}.
+                Check Jenkins console for details.
                 Project: ${env.JOB_NAME}
                 Build Number: ${env.BUILD_NUMBER}
                 Build URL: ${env.BUILD_URL}
-                """,
+            """,
             attachmentsPattern: 'allure-report.zip'
+        )
         }
         success {
             echo 'Tests passed successfully!'
