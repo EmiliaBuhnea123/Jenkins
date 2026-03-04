@@ -15,8 +15,7 @@ pipeline {
                 sh 'npx playwright test'
                 sh 'npx allure generate allure-results --clean -o allure-report'
                 sh 'zip -r allure-report.zip allure-report'
-                sh 'ls -l ${WORKSPACE}'
-                sh 'pwd'
+                sh 'cp allure-report.zip allure-report-for-email.zip'
             }
         }
     }
@@ -25,7 +24,6 @@ pipeline {
             allure includeProperties: false,
                    jdk: '',
                    results: [[path: 'allure-results']]
-            sh 'cp allure-report.zip allure-report-for-email.zip'
             script {       
                 emailext(
                     to: 'ebuhnea@griddynamics.com',
