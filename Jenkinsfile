@@ -12,7 +12,8 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'npx playwright test --reporter=line,allure-playwright'
+                sh 'npx playwright test'
+                sh 'npx allure generate allure-results --clean -o allure-report'
                 sh 'zip -r allure-report.zip allure-report'
             }
         }
